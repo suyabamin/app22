@@ -35,16 +35,54 @@ class HomeActivity extends StatelessWidget{
 
  }
 
-MySnckBar(message,context){
-  return ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(content: Text(message))
-  );
-}
 
+///Alert dilog 
+/*  MyAlertDialog(context){
+  return showDialog(
+    context: context,
+   builder: (BuildContext context){
+     return Expanded(
+      child: AlertDialog(
+        title :Text("Alert !"),
+        content: Text("Do you want to delete?"),
+        actions: [
+          TextButton( onPressed:(){
+              MySnackBar("delete successfully", context);
+              Navigator.of(context).pop();
+            },
+             child: Text("Yes")
+            ),
+
+            TextButton(onPressed: (){Navigator.of(context).pop();}, child:Text("No")),
+        ],
+      )
+      );
+   }
+   
+   );
+}   */
 
 
   @override
   Widget build(BuildContext context) {
+
+
+//button style
+ /*  ButtonStyle buttonStyle= ElevatedButton.styleFrom(
+  padding: EdgeInsets.all(25),
+  backgroundColor: Colors.green,
+  foregroundColor: Colors.white,
+ shape: RoundedRectangleBorder(
+  borderRadius: BorderRadius.all(Radius.circular(40))
+ )
+
+);  */
+
+
+///button style for text file with button
+   ButtonStyle buttonStyle =ElevatedButton.styleFrom(
+    minimumSize: Size(double.infinity, 60)
+   ); 
     
   return Scaffold(
   appBar: AppBar(
@@ -96,14 +134,34 @@ children: [
  
  //button
 
-body: Row(
+/* body: Row(
   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
   children: [
     TextButton(onPressed: (){MySnackBar("Text Button prassed", context);}, child:Text('Text Button')),
-    ElevatedButton(onPressed: (){MySnackBar("Elevated Button prassed", context);}, child:Text('Elevated Button')),
+    ElevatedButton(onPressed: (){MySnackBar("Elevated Button prassed", context);}, child:Text('Elevated Button'),style:buttonStyle,),
     OutlinedButton(onPressed: (){MySnackBar("outline Button prassed", context);}, child:Text('outline Button'))
   ],
-),
+),*/
+ 
+ 
+ //this body for dilog Alert
+/* body: Center(
+    child: ElevatedButton(child: Text("click"),onPressed: (){MyAlertDialog(context);},),
+ ),*/
+ 
+ 
+ //Text fild 
+ body:Column(
+mainAxisAlignment: MainAxisAlignment.start,
+children: [
+Padding(padding: EdgeInsets.all(20),child:TextField(decoration: InputDecoration(border: OutlineInputBorder(),labelText: 'first name'),) ,),
+Padding(padding: EdgeInsets.all(20),child:TextField(decoration: InputDecoration(border: OutlineInputBorder(),labelText: 'first name'),) ,),
+Padding(padding: EdgeInsets.all(20),child:TextField(decoration: InputDecoration(border: OutlineInputBorder(),labelText: 'first name'),) ,),
+Padding(padding: EdgeInsets.all(20), child: ElevatedButton(onPressed:(){}, child: Text("submit"),style: buttonStyle,), )
+],
+
+ ),
+ 
  
   );
 
