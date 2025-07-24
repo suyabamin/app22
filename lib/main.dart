@@ -80,10 +80,24 @@ class HomeActivity extends StatelessWidget{
 
 
 ///button style for text file with button
-   ButtonStyle buttonStyle =ElevatedButton.styleFrom(
+/*   ButtonStyle buttonStyle =ElevatedButton.styleFrom(
     minimumSize: Size(double.infinity, 60)
-   ); 
+   ); */
     
+
+    var MyItems=[
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"sunny"},
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"suyab"},
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"amin"},
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"su,,,"},
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"Hasi"},
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"sunny"},
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"suyab"},
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"amin"},
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"su,,,"},
+      {"img":"https://static.vecteezy.com/system/resources/previews/008/013/419/non_2x/technology-concept-for-web-banner-template-or-brochure-blue-colour-vector.jpg","title":"Hasi"},
+    ];
+
   return Scaffold(
   appBar: AppBar(
    
@@ -151,18 +165,66 @@ children: [
  
  
  //Text fild 
- body:Column(
+ /*body:Column(
 mainAxisAlignment: MainAxisAlignment.start,
 children: [
 Padding(padding: EdgeInsets.all(20),child:TextField(decoration: InputDecoration(border: OutlineInputBorder(),labelText: 'first name'),) ,),
-Padding(padding: EdgeInsets.all(20),child:TextField(decoration: InputDecoration(border: OutlineInputBorder(),labelText: 'first name'),) ,),
-Padding(padding: EdgeInsets.all(20),child:TextField(decoration: InputDecoration(border: OutlineInputBorder(),labelText: 'first name'),) ,),
+Padding(padding: EdgeInsets.all(20),child:TextField(decoration: InputDecoration(border: OutlineInputBorder(),labelText: 'Last name'),) ,),
+Padding(padding: EdgeInsets.all(20),child:TextField(decoration: InputDecoration(border: OutlineInputBorder(),labelText: 'Email'),) ,),
 Padding(padding: EdgeInsets.all(20), child: ElevatedButton(onPressed:(){}, child: Text("submit"),style: buttonStyle,), )
 ],
 
- ),
+ ),    */
  
+  //jesson array,,,gester effecr
+  //List view
+/*body: ListView.builder(
+  itemCount: MyItems.length,
+
+  itemBuilder:(context,index){
+    return GestureDetector(
+      onTap: (){MySnackBar(MyItems[index]['title'],context);},
+     // onDoubleTap: (){MySnackBar(MyItems[index]['title'],context);},
+     //onLongPress: (){MySnackBar(MyItems[index]['title'],context);},
+
+
+      child: Container(
+        margin: EdgeInsets.all(10),
+        width: double.infinity,
+        height: 200,
+        child: Image.network(MyItems[index]['img']!, fit:BoxFit.fill ),
+      ),
+    );
+  }
+   ) */
+
  
+
+//grid view
+body: GridView.builder(
+  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+    crossAxisCount: 3,  //how much luine of image(2line ,three line,4line)
+    crossAxisSpacing: 0,  //distain between line
+    childAspectRatio: 1.5
+  ),
+  itemCount: MyItems.length,
+  itemBuilder:(context,index){
+    return GestureDetector(
+      onTap: (){MySnackBar(MyItems[index]['title'],context);},
+     // onDoubleTap: (){MySnackBar(MyItems[index]['title'],context);},
+     //onLongPress: (){MySnackBar(MyItems[index]['title'],context);},
+
+
+      child: Container(
+        margin: EdgeInsets.all(10),  ///peading ,,, more efficient then crossAxis Spacing
+        width: double.infinity,
+        height: 200,
+        child: Image.network(MyItems[index]['img']!, fit:BoxFit.fill ),
+      ),
+    );
+  }
+   ) 
+
   );
 
 
